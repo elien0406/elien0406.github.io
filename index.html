@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>焦怡玲｜個人網頁</title>
+  <meta name="description" content="個人作品集與聯絡資訊">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='32%25' cy='24%25' r='75%25'%3E%3Cstop offset='0' stop-color='%23fff7b2'/%3E%3Cstop offset='.45' stop-color='%23f6c453'/%3E%3Cstop offset='1' stop-color='%231d6f66'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M32 10l4.8 14.3L52 28.8l-15.2 4.7L32 49l-4.8-15.5L12 28.8l15.2-4.5L32 10z' fill='white'/%3E%3Ccircle cx='46' cy='17' r='4' fill='white' opacity='.9'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #fff8df;
+      --surface: #fffdf2;
+      --ink: #2c2a24;
+      --muted: #625d51;
+      --line: #2c2a24;
+      --brand: #177b75;
+      --brand-2: #dc6549;
+      --accent: #ffd84d;
+      --sky: #8bd3ff;
+      --shadow: 8px 8px 0 rgba(44, 42, 36, .16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft JhengHei", "PingFang TC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12px 12px, rgba(44, 42, 36, .08) 1.2px, transparent 1.4px),
+        linear-gradient(90deg, rgba(139, 211, 255, .2) 1px, transparent 1px),
+        linear-gradient(var(--bg), var(--bg));
+      background-size: 24px 24px, 100% 32px, auto;
+      line-height: 1.65;
+    }
+
+    h1,
+    h2,
+    h3,
+    .button,
+    .logo,
+    .section-kicker {
+      font-family: "Comic Sans MS", "Marker Felt", "Microsoft JhengHei", "PingFang TC", cursive, sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(31, 41, 51, .08);
+      background: rgba(255, 248, 223, .92);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 72px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+      transform: rotate(-1deg);
+    }
+
+    .logo-mark {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border: 2px solid var(--ink);
+      border-radius: 42% 58% 52% 48% / 48% 38% 62% 52%;
+      background:
+        radial-gradient(circle at 28% 18%, #fff8c7 0 18%, transparent 19%),
+        linear-gradient(135deg, #f6c453 0%, #ffffff 35%, #1d6f66 100%);
+      color: #fff;
+      font-size: 17px;
+      text-shadow: 0 1px 4px rgba(31, 41, 51, .42);
+      box-shadow: 3px 4px 0 rgba(44, 42, 36, .18), 0 0 24px rgba(246, 196, 83, .42);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .nav-links a {
+      padding: 8px 12px;
+      border: 2px solid transparent;
+      border-radius: 999px 760px 880px 720px / 720px 920px 690px 850px;
+      transition: background .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, .82);
+      color: var(--brand);
+      border-color: var(--ink);
+      box-shadow: 3px 4px 0 rgba(44, 42, 36, .14), 0 0 22px rgba(246, 196, 83, .48);
+      transform: translateY(-1px) rotate(-1deg);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: 56px;
+      align-items: center;
+      min-height: calc(100svh - 72px);
+      padding: 58px 0 80px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--brand-2);
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: underline wavy rgba(220, 101, 73, .45) 2px;
+      text-underline-offset: 7px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(42px, 7vw, 84px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      text-shadow: 3px 3px 0 rgba(255, 216, 77, .55);
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 18px;
+      border: 1px solid var(--ink);
+      border-width: 2px;
+      border-radius: 999px 760px 880px 720px / 720px 920px 690px 850px;
+      font-weight: 800;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .button.secondary {
+      background: transparent;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      box-shadow: 5px 6px 0 rgba(44, 42, 36, .18), 0 0 28px rgba(246, 196, 83, .55);
+    }
+
+    .button.primary:hover {
+      background: linear-gradient(135deg, #1f2933 0%, #1d6f66 58%, #f6c453 100%);
+    }
+
+    .button.secondary:hover {
+      background: rgba(255, 255, 255, .72);
+    }
+
+    .portrait-wrap {
+      position: relative;
+    }
+
+    .portrait-wrap::before,
+    .portrait-wrap::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      width: 72px;
+      height: 72px;
+      border: 3px solid var(--ink);
+      pointer-events: none;
+    }
+
+    .portrait-wrap::before {
+      top: -18px;
+      left: -16px;
+      border-right: 0;
+      border-bottom: 0;
+      border-radius: 18px 0 0 0;
+      transform: rotate(-6deg);
+    }
+
+    .portrait-wrap::after {
+      right: -14px;
+      bottom: -14px;
+      border-left: 0;
+      border-top: 0;
+      border-radius: 0 0 18px 0;
+      transform: rotate(-4deg);
+    }
+
+    .portrait {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border: 3px solid var(--ink);
+      border-radius: 32% 68% 45% 55% / 46% 36% 64% 54%;
+      box-shadow: var(--shadow);
+      background: #d8d1c3;
+      transform: rotate(1.4deg);
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(.96);
+    }
+
+    .info-strip {
+      position: absolute;
+      right: -18px;
+      bottom: 28px;
+      width: min(280px, 70%);
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .6);
+      border: 2px solid var(--ink);
+      border-radius: 18px 12px 20px 14px / 14px 20px 12px 18px;
+      background: rgba(255, 253, 242, .9);
+      box-shadow: 5px 6px 0 rgba(44, 42, 36, .16);
+      backdrop-filter: blur(8px);
+      transform: rotate(-2deg);
+    }
+
+    .info-strip strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .info-strip span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    section {
+      padding: 78px 0;
+      border-top: 2px dashed rgba(44, 42, 36, .38);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(170px, .35fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      color: var(--brand);
+      font-weight: 800;
+      display: inline-block;
+      padding: 3px 10px;
+      border: 2px solid var(--ink);
+      border-radius: 999px 720px 860px 760px / 760px 880px 720px 900px;
+      background: #d9f5ff;
+      box-shadow: 3px 4px 0 rgba(44, 42, 36, .12);
+      transform: rotate(-1deg);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: 0;
+      text-decoration: underline;
+      text-decoration-thickness: 10px;
+      text-decoration-color: rgba(255, 216, 77, .55);
+      text-underline-offset: -3px;
+      text-decoration-skip-ink: none;
+    }
+
+    .about-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .tile {
+      min-height: 190px;
+      padding: 24px;
+      border: 2px solid var(--line);
+      border-radius: 18px 12px 22px 14px / 14px 22px 12px 18px;
+      background: var(--surface);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 4px 5px 0 rgba(44, 42, 36, .1);
+    }
+
+    .tile:nth-child(2) {
+      transform: rotate(.6deg);
+    }
+
+    .tile:nth-child(3) {
+      transform: rotate(-.5deg);
+    }
+
+    .tile:hover,
+    .project:hover,
+    .event:hover {
+      transform: translateY(-3px);
+      border-color: rgba(246, 196, 83, .8);
+      box-shadow: 6px 7px 0 rgba(44, 42, 36, .16), 0 0 30px rgba(246, 196, 83, .42);
+    }
+
+    .tile h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .tile p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .project {
+      overflow: hidden;
+      border: 2px solid var(--line);
+      border-radius: 18px 12px 22px 14px / 14px 22px 12px 18px;
+      background: var(--surface);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      box-shadow: 4px 5px 0 rgba(44, 42, 36, .1);
+    }
+
+    .project-media {
+      height: 180px;
+      background:
+        linear-gradient(135deg, rgba(29, 111, 102, .86), rgba(233, 196, 106, .72)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+      border-bottom: 2px solid var(--ink);
+      filter: saturate(1.15);
+    }
+
+    .project:nth-child(2) .project-media {
+      background:
+        linear-gradient(135deg, rgba(183, 77, 54, .78), rgba(31, 41, 51, .62)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project:nth-child(3) .project-media {
+      background:
+        linear-gradient(135deg, rgba(31, 41, 51, .72), rgba(29, 111, 102, .7)),
+        url("https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project-body {
+      padding: 22px;
+    }
+
+    .project-body h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+
+    .project-body p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tags span {
+      padding: 5px 9px;
+      border: 1px solid rgba(44, 42, 36, .45);
+      border-radius: 999px 760px 880px 720px / 720px 920px 690px 850px;
+      background: rgba(139, 211, 255, .28);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 2px dashed rgba(44, 42, 36, .35);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, padding .2s ease;
+    }
+
+    .event time {
+      color: var(--brand-2);
+      font-weight: 800;
+    }
+
+    .event h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+    }
+
+    .event p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(280px, .6fr);
+      gap: 32px;
+      align-items: end;
+      padding: 34px;
+      border: 3px solid var(--ink);
+      border-radius: 24px 16px 28px 18px / 18px 28px 16px 24px;
+      background:
+        linear-gradient(135deg, rgba(255, 216, 77, .18), transparent 42%),
+        var(--ink);
+      color: #fff;
+      box-shadow: 8px 8px 0 rgba(44, 42, 36, .18);
+    }
+
+    .contact-panel p {
+      margin: 16px 0 0;
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+      color: rgba(255, 255, 255, .86);
+    }
+
+    .contact-list a {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .18);
+      transition: color .2s ease, text-shadow .2s ease, border-color .2s ease;
+    }
+
+    .contact-list a:hover {
+      color: #fff4a7;
+      border-color: rgba(246, 196, 83, .72);
+      text-shadow: 0 0 18px rgba(246, 196, 83, .82);
+    }
+
+    footer {
+      padding: 28px 0 38px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .hero,
+      .section-head,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 34px;
+        min-height: auto;
+        padding-top: 44px;
+      }
+
+      .about-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .info-strip {
+        right: 14px;
+        bottom: 14px;
+      }
+
+      .event {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .shell {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .contact-panel {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="shell nav" aria-label="主要導覽">
+      <a class="logo" href="#top" aria-label="回到首頁">
+        <span class="logo-mark">你</span>
+        <span>焦怡玲</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">關於</a>
+        <a href="#projects">作品</a>
+        <a href="#experience">經歷</a>
+        <a href="#contact">聯絡</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">北醫大跨領域創創專員｜創新推動者｜跨域協作</p>
+        <h1 id="hero-title">你好，我是焦怡玲。</h1>
+        <p class="hero-copy">
+          我在北醫大推動跨領域創新與創意實作，協助團隊把想法整理成清楚、好用、能被看見的成果。
+        </p>
+        <div class="actions">
+          <a class="button primary" href="#projects">查看作品</a>
+          <a class="button secondary" href="mailto:hello@example.com">寄信給我</a>
+        </div>
+      </div>
+      <div class="portrait-wrap" aria-label="個人形象照">
+        <div class="portrait">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=80" alt="年輕女生人像照片">
+        </div>
+        <div class="info-strip">
+          <strong>目前專注</strong>
+          <span>跨域創新、創業育成、AI 應用</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-kicker">關於我</div>
+          <h2>連結不同專業，讓創意走向可實作的成果。</h2>
+        </div>
+        <div class="about-grid">
+          <article class="tile">
+            <h3>我的特色</h3>
+            <p>擅長整合資源、規劃流程，協助跨領域團隊把問題拆解成可執行的行動。</p>
+          </article>
+          <article class="tile">
+            <h3>學習方向</h3>
+            <p>關注 AI 應用、創新教育、創業培育與跨域專案的實作方法。</p>
+          </article>
+          <article class="tile">
+            <h3>合作方式</h3>
+            <p>重視清楚溝通與共創節奏，陪伴團隊把點子打磨成可展示、可推進的作品。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-kicker">作品集</div>
+          <h2>近期專案與練習作品。</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-body">
+              <h3>AI 對話紀錄整理</h3>
+              <p>建立對話紀錄模板，協助整理討論重點、待辦事項與後續追蹤。</p>
+              <div class="tags">
+                <span>AI</span>
+                <span>筆記</span>
+                <span>流程</span>
+              </div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-body">
+              <h3>個人網頁設計</h3>
+              <p>設計簡潔的個人介紹頁，呈現自我介紹、作品與聯絡資訊。</p>
+              <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>設計</span>
+              </div>
+            </div>
+          </article>
+          <article class="project">
+            <div class="project-media" aria-hidden="true"></div>
+            <div class="project-body">
+              <h3>專題企劃簡報</h3>
+              <p>把主題研究轉換成清楚的簡報架構，方便發表與團隊協作。</p>
+              <div class="tags">
+                <span>企劃</span>
+                <span>簡報</span>
+                <span>研究</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="shell">
+        <div class="section-head">
+          <div class="section-kicker">經歷</div>
+          <h2>學習、實作與成長軌跡。</h2>
+        </div>
+        <div class="timeline">
+          <article class="event">
+            <time>2026</time>
+            <div>
+              <h3>AI 體驗營</h3>
+              <p>練習使用 AI 工具完成紀錄模板、個人網頁與創意專題。</p>
+            </div>
+          </article>
+          <article class="event">
+            <time>2025</time>
+            <div>
+              <h3>專題製作</h3>
+              <p>參與資料收集、內容整理、版面設計與成果發表。</p>
+            </div>
+          </article>
+          <article class="event">
+            <time>持續進行</time>
+            <div>
+              <h3>自主學習</h3>
+              <p>探索網頁、設計、AI 應用與數位表達，累積可展示的作品。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="shell">
+        <div class="contact-panel">
+          <div>
+            <div class="section-kicker">聯絡我</div>
+            <h2>期待一起把想法做成作品。</h2>
+            <p>歡迎透過 Email、社群或作品平台與我聯繫。</p>
+          </div>
+          <div class="contact-list">
+            <a href="mailto:hello@example.com">hello@example.com</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">© 2026 焦怡玲。All rights reserved.</div>
+  </footer>
+</body>
+</html>
