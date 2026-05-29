@@ -51,11 +51,6 @@
       text-decoration: none;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
     .shell {
       width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
@@ -203,62 +198,25 @@
       background: rgba(255, 255, 255, .72);
     }
 
-    .portrait-wrap {
+    .feature-note {
       position: relative;
-    }
-
-    .portrait-wrap::before,
-    .portrait-wrap::after {
-      content: "";
-      position: absolute;
-      z-index: 1;
-      width: 72px;
-      height: 72px;
+      min-height: 430px;
+      padding: 34px;
       border: 3px solid var(--ink);
-      pointer-events: none;
-    }
-
-    .portrait-wrap::before {
-      top: -18px;
-      left: -16px;
-      border-right: 0;
-      border-bottom: 0;
-      border-radius: 18px 0 0 0;
-      transform: rotate(-6deg);
-    }
-
-    .portrait-wrap::after {
-      right: -14px;
-      bottom: -14px;
-      border-left: 0;
-      border-top: 0;
-      border-radius: 0 0 18px 0;
-      transform: rotate(-4deg);
-    }
-
-    .portrait {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      border: 3px solid var(--ink);
-      border-radius: 32% 68% 45% 55% / 46% 36% 64% 54%;
+      border-radius: 28px 18px 34px 20px / 18px 34px 20px 28px;
+      background:
+        linear-gradient(135deg, rgba(255, 216, 77, .5), transparent 34%),
+        radial-gradient(circle at 78% 18%, rgba(139, 211, 255, .65) 0 18%, transparent 19%),
+        var(--surface);
       box-shadow: var(--shadow);
-      background: #d8d1c3;
-      transform: rotate(1.4deg);
-    }
-
-    .portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(1.08) contrast(.96);
+      transform: rotate(1.2deg);
+      display: grid;
+      align-content: center;
+      gap: 22px;
     }
 
     .info-strip {
-      position: absolute;
-      right: -18px;
-      bottom: 28px;
-      width: min(280px, 70%);
+      width: min(320px, 100%);
       padding: 18px;
       border: 1px solid rgba(255, 255, 255, .6);
       border: 2px solid var(--ink);
@@ -267,6 +225,27 @@
       box-shadow: 5px 6px 0 rgba(44, 42, 36, .16);
       backdrop-filter: blur(8px);
       transform: rotate(-2deg);
+    }
+
+    .sketch-star {
+      width: 140px;
+      height: 140px;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--ink);
+      border-radius: 48% 52% 44% 56% / 58% 42% 54% 46%;
+      background: var(--accent);
+      box-shadow: 6px 7px 0 rgba(44, 42, 36, .16), 0 0 32px rgba(246, 196, 83, .54);
+      color: var(--ink);
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1;
+      transform: rotate(-7deg);
+    }
+
+    .feature-note h2 {
+      max-width: 420px;
+      font-size: clamp(28px, 4vw, 46px);
     }
 
     .info-strip strong {
@@ -583,10 +562,9 @@
           <a class="button secondary" href="mailto:hello@example.com">寄信給我</a>
         </div>
       </div>
-      <div class="portrait-wrap" aria-label="個人形象照">
-        <div class="portrait">
-          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Doraemon%20at%20National%20Museum%20of%20Singapore..jpg?v=20260529-doraemon" alt="哆啦A夢照片">
-        </div>
+      <div class="feature-note" aria-label="個人重點">
+        <div class="sketch-star" aria-hidden="true">✦</div>
+        <h2>跨域創新，把點子畫成行動。</h2>
         <div class="info-strip">
           <strong>目前專注</strong>
           <span>跨域創新、創業育成、AI 應用</span>
